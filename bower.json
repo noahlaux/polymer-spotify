@@ -1,0 +1,25 @@
+{
+  "name": "polymer-spotify",
+  "version": "0.0.1",
+  "authors": [
+    "Noah Laux <noahlaux@gmail.com>"
+  ],
+  "description": "Polymer elements wrappers for spotify api",
+  "keywords": [
+    "polymer",
+    "spotify"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "core-ajax": "Polymer/core-ajax#~0.3.5",
+    "spotify-web-api-js": "~0.4.1",
+    "polymer-jsonp": "Polymer/polymer-jsonp#~0.3.0"
+  }
+}

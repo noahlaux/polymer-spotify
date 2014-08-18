@@ -1,0 +1,32 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="spotify-artist.html">
+
+<polymer-element name="spotify-track-list" attributes="search" noscript>
+    <template>
+        <ul>
+            <template repeat="{{track in tracks}}">
+                <li>{{track.name}} - <spotify-artist artist="{{track.artists[0]}}"></spotify-artist></li>
+            </template>
+        </ul>
+    </template>
+    <script src="/bower_components/spotify-web-api-js/src/spotify-web-api.js"></script>
+    <script>
+        Polymer('spotify-track-list', {
+            width: 100,
+            height: 100,
+            created: function () {
+                this.api = new SpotifyWebApi();
+                this.tracks = [];
+            },
+            searchChanged: function (value) {
+                if (value) {
+                    this.api.searchTracks(value)
+                        .then(function (response) {
+                            debugger;
+                            this.tracks = response.tracks.items;
+                        }.bind(this));
+                }
+            }
+        });
+    </script>
+</polymer-element>

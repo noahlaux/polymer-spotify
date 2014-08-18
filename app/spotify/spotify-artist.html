@@ -1,0 +1,19 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/polymer-jsonp/polymer-jsonp.html">
+
+<polymer-element id="artist" name="spotify-artist" attributes="artist" noscript>
+    <template>
+        <polymer-jsonp auto url="https://embed.spotify.com/oembed/?url={{artist.uri}}&callback=" response="{{response}}"></polymer-jsonp>
+        <a href="{{artist.href}}" target="_blank">
+            <img src="{{artist.img}}" />
+            {{artist.name}}
+        </a>
+    </template>
+    <script>
+        Polymer('spotify-artist', {
+            responseChanged: function (response) {
+                debugger;
+            }
+        });
+    </script>
+</polymer-element>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spotify api test</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <!-- polymer polyfills -->
+    <script src="/bower_components/platform/platform.js"></script>
+
+    <link rel="import" href="app/spotify/spotify-track-list.html">
+</head>
+<body ng-app="app">
+    <h2>track list</h2>
+    <input type="text" id="searchString"/>
+    <spotify-track-list id="trackList" search="love"></spotify-track-list>
+
+    <script src="app/app.js"></script>
+</body>
+</html>
