@@ -1,0 +1,14 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<polymer-element id="artist" name="spotify-track" attributes="track" noscript>
+    <template>
+        <style>
+        </style>
+        <a href="{{track.href}}" target="_blank">
+            {{track.name}}
+        </a>
+    </template>
+    <script>
+        Polymer('spotify-track', {});
+    </script>
+</polymer-element>

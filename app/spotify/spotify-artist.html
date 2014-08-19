@@ -3,16 +3,30 @@
 
 <polymer-element id="artist" name="spotify-artist" attributes="artist" noscript>
     <template>
-        <polymer-jsonp auto url="https://embed.spotify.com/oembed/?url={{artist.uri}}&callback=" response="{{response}}"></polymer-jsonp>
+        <style>
+            img {
+                width: 30px;
+                height: 30px;
+                vertical-align: middle;
+            }
+        </style>
+
+        <polymer-jsonp id="embeddedData" auto url="https://embed.spotify.com/oembed/?url={{artist.uri}}&callback=" response="{{response}}" ></polymer-jsonp>
+
+        <img src="{{artist.thumbnail_url}}" />
         <a href="{{artist.href}}" target="_blank">
-            <img src="{{artist.img}}" />
             {{artist.name}}
         </a>
     </template>
     <script>
         Polymer('spotify-artist', {
-            responseChanged: function (response) {
-                debugger;
+            ready: function () {
+                this.$.embeddedData.addEventListener('polymer-response', function (response) {
+                    this.extendArtist(response.detail.response);
+                }.bind(this));
+            },
+            extendArtist: function (extra) {
+                this.artist.thumbnail_url = extra.thumbnail_url;
             }
         });
     </script>
