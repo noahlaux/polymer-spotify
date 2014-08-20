@@ -6,14 +6,10 @@
 
     <!-- polymer polyfills -->
     <script src="/bower_components/platform/platform.js"></script>
-
-    <link rel="import" href="app/spotify/spotify-track-list.html">
+    <link rel="import" href="app/spotify/spotify-app.html">
 </head>
-<body ng-app="app">
-    <h2>track list</h2>
-    <input type="text" id="searchString"/>
-
-    <spotify-track-list id="trackList"></spotify-track-list>
-    <script src="app/app.js"></script>
+<body fullbleed vertical layout unresolved>
+    <!-- app -->
+    <spotify-app></spotify-app>
 </body>
 </html>
