@@ -1,0 +1,17 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="spotify-artist.html">
+<link rel="import" href="../components/audio-player.html">
+<link rel="import" href="/bower_components/spotify-previewbutton/index.html">
+
+<polymer-element name="spotify-track" attributes="track" noscript>
+    <template>
+        <spotify-artist artist="{{track.artists[0]}}"></spotify-artist> -
+        <a href="{{track.uri}}" target="_blank">
+            {{track.name}}
+        </a>
+        <!-- <spotify-previewbutton uri="{{ track.uri }}"></spotify-previewbutton> -->
+    </template>
+    <script>
+        Polymer('spotify-track');
+    </script>
+</polymer-element>

@@ -1,0 +1,36 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/core-header-panel/core-header-panel.html">
+<link rel="import" href="/bower_components/core-dropdown/core-dropdown.html">
+<link rel="import" href="/bower_components/core-icons/core-icons.html">
+<link rel="import" href="/bower_components/core-icon/core-icon.html">
+<link rel="import" href="/bower_components/core-input/core-input.html">
+<link rel="import" href="/bower_components/core-field/core-field.html">
+<link rel="import" href="views/spotify-list.html">
+
+<polymer-element name="spotify-app">
+    <template>
+        <!-- theme -->
+        <link href="theme.css" rel="stylesheet">
+        <!-- component -->
+        <core-header-panel fit vertical layout mode="waterfall">
+            <core-toolbar horizontal layout center>
+                <!-- search field -->
+                <core-field flex>
+                    <core-icon icon="search"></core-icon>
+                    <core-input placeholder="Search for..." autofocus="true" value="{{ query }}"></core-input>
+                </core-field>
+                <!-- search type dropdown -->
+                <core-dropdown id="type" selected="artist">
+                    <core-item label="Artists" name="artist"></core-item>
+                    <core-item label="Tracks" name="track"></core-item>
+                    <core-item label="Albums" name="album"></core-item>
+                </core-dropdown>
+            </core-toolbar>
+            <!-- track list -->
+            <spotify-list flex type="{{ $.type.selected }}" query="{{ query }}"></spotify-list>
+        </core-header-panel>
+    </template>
+    <script>
+      Polymer('spotify-app');
+    </script>
+</polymer-element>

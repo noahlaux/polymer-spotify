@@ -1,0 +1,12 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<polymer-element name="audio-player" attributes="url" noscript>
+    <template>
+        <audio src="{{url}}" controls="controls">
+            Your browser does not support the <code>audio</code> element.
+        </audio>
+    </template>
+    <script>
+        Polymer('audio-player');
+    </script>
+</polymer-element>

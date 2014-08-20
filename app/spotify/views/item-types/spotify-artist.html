@@ -1,0 +1,37 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/polymer-jsonp/polymer-jsonp.html">
+
+<polymer-element name="spotify-artist" attributes="artist" noscript>
+    <template>
+        <style>
+            img {
+                width: 30px;
+                height: 30px;
+                vertical-align: middle;
+            }
+        </style>
+
+        <polymer-jsonp id="embeddedData" auto url="https://embed.spotify.com/oembed/?url={{artist.uri}}&callback=" response="{{response}}" ></polymer-jsonp>
+
+        <img src="{{artist.images[2].url}}" />
+        <a href="{{artist.href}}" target="_blank">
+            {{artist.name}}
+        </a>
+    </template>
+    <script>
+        Polymer('spotify-artist', {
+            ready: function () {
+                if (!this.artist.images) {
+                    this.$.embeddedData.addEventListener('polymer-response', function (response) {
+                        this.extendArtist(response.detail.response);
+                    }.bind(this));
+                }
+            },
+            extendArtist: function (extra) {
+
+                // Images polyfill
+                this.artist.images = [].concat([null], [null], [{ url: extra.thumbnail_url }]);
+            }
+        });
+    </script>
+</polymer-element>

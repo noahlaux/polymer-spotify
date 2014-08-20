@@ -1,0 +1,14 @@
+core-toolbar, spotify-list {
+    padding: 10px;
+}
+
+core-field {
+    border: 1px solid #ddd;
+    margin: 10px;
+    height: 40px;
+}
+
+core-dropdown::shadow #menu {
+    background-color: #eee;
+    border: 1px solid #ccc;
+}

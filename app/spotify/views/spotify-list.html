@@ -1,0 +1,26 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<link rel="import" href="/bower_components/core-list/core-list.html">
+<link rel="import" href="spotify-item.html">
+<link rel="import" href="/bower_components/spotify-search/spotify-search.html">
+
+<polymer-element name="spotify-list" attributes="query type" noscript>
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+        <spotify-search id="search" query="{{ query }}" type="{{ type }}"></spotify-search>
+        <core-list data="{{ $.search.result }}" height="200">
+            <template>
+                <div class="list-item">
+                    <spotify-item item="{{}}"></spotify-item>
+                </div>
+            </template>
+        </core-list>
+    </template>
+    <script>
+        Polymer('spotify-list');
+    </script>
+</polymer-element>

@@ -1,0 +1,21 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<!-- types -->
+<link rel="import" href="item-types/spotify-artist.html">
+<link rel="import" href="item-types/spotify-track.html">
+
+<polymer-element name="spotify-item" attributes="item" noscript>
+    <template>
+        <div layout horizontal>
+            <template if="{{ item.type == 'artist' }}">
+                <spotify-artist artist="{{item}}"></spotify-artist>
+            </template>
+            <template if="{{ item.type == 'track' }}">
+                <spotify-track track="{{item}}"></spotify-track>
+            </template>
+        </div>
+    </template>
+    <script>
+        Polymer('spotify-item');
+    </script>
+</polymer-element>
